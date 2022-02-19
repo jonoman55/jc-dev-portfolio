@@ -21,9 +21,9 @@ const Testimonial = () => {
         client.fetch(query)
             .then((data) => setTestimonials(data))
             .catch(err => console.log(err));
-        client.fetch(brandsQuery).then((data) =>
-            setBrands(sortBy(data, ['name']))
-        ).catch(err => console.log(err));
+        client.fetch(brandsQuery)
+            .then((data) => setBrands(sortBy(data, ['name'])))
+            .catch(err => console.log(err));
     }, []);
 
     return (
@@ -59,7 +59,9 @@ const Testimonial = () => {
                         transition={{ duration: 0.5, type: 'tween' }}
                         key={index}
                     >
-                        <img src={urlFor(brand?.imgUrl)} alt={brand?.name} />
+                        <a href={`https://www.${brand?.name}.com`} target='_blank' rel='noreferrer'>
+                            <img src={urlFor(brand?.imgUrl)} alt={brand?.name} />
+                        </a>
                     </motion.div>
                 ))}
             </div>

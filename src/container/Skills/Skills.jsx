@@ -16,9 +16,9 @@ const Skills = () => {
         client.fetch(query)
             .then((data) => setExperiences(data))
             .catch(err => console.log(err));
-        client.fetch(skillsQuery).then((data) =>
-            setSkills(sortBy(data, ['name']))
-        ).catch(err => console.log(err));
+        client.fetch(skillsQuery)
+            .then((data) => setSkills(sortBy(data, ['name'])))
+            .catch(err => console.log(err));
     }, []);
 
     return (

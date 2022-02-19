@@ -3,9 +3,12 @@ import { motion } from 'framer-motion';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
+import { sortBy } from 'lodash';
 import './Work.scss';
 
 const initalAnimateState = [{ y: 0, opacity: 1 }];
+
+const tags = ['All', 'API', 'Next JS', 'React JS', 'UI/UX'];
 
 const Work = () => {
     const [activeFilter, setActiveFilter] = useState('All');
@@ -16,8 +19,9 @@ const Work = () => {
     useEffect(() => { 
         const query = '*[_type == "works"]';
         client.fetch(query).then((data) => {
-            setWorks(data);
-            setFilterWork(data);
+            const sortedData = sortBy(data, ['title']);
+            setWorks(sortedData);
+            setFilterWork(sortedData);
         }).catch(err => console.log(err));
     }, []);
 
@@ -29,9 +33,9 @@ const Work = () => {
             if (item === 'All') {
                 setFilterWork(works);
             } else {
-                setFilterWork(works.filter((work) =>
-                    work?.tags?.includes(item))
-                );
+                setFilterWork(works?.filter((work) =>
+                    work?.tags?.includes(item)
+                ));
             }
         }, 500);
     };
@@ -40,7 +44,7 @@ const Work = () => {
         <>
             <h2 className='head-text'>My <span>Portfolio</span> Section</h2>
             <div className='app__work-filter'>
-                {['UI/UX', 'Next JS', 'React JS', 'API', 'All'].map((item, index) => (
+                {tags?.map((item, index) => (
                     <div
                         key={index}
                         onClick={() => handleWorkFilter(item)}
@@ -55,7 +59,7 @@ const Work = () => {
                 transition={{ duration: 0.5, delayChildren: 0.5 }}
                 className='app__work-portfolio'
             >
-                {filterWork.map((work, index) => (
+                {filterWork?.map((work, index) => (
                     <div className='app__work-item app__flex' key={index}>
                         <div className='app__work-img app_flex'>
                             <img src={urlFor(work?.imgUrl)} alt={work?.name} />
@@ -103,5 +107,5 @@ const Work = () => {
 export default AppWrap(
     MotionWrap(Work, 'app__works'),
     'work',
-    'app__primarybg'
+    'app__primarybg',
 );

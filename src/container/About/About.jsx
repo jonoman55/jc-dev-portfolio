@@ -5,15 +5,15 @@ import { client, urlFor } from '../../client';
 import { sortBy } from 'lodash';
 import './About.scss';
 
-// TODO : Add better images to  About section 
+// TODO : Add better images to About section 
 const About = () => {
     const [abouts, setAbouts] = useState([]);
 
     useEffect(() => {
         const query = '*[_type == "abouts"]';
-        client.fetch(query).then((data) =>
-            setAbouts(sortBy(data, ['_updatedAt'])
-        )).catch(err => console.log(err));
+        client.fetch(query)
+            .then((data) => setAbouts(sortBy(data, ['_updatedAt'])))
+            .catch(err => console.log(err));
     }, []);
   
     return (
