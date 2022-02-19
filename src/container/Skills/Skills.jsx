@@ -13,10 +13,12 @@ const Skills = () => {
     useEffect(() => {
         const query = '*[_type == "experiences"]';
         const skillsQuery = '*[_type == "skills"]';
-        client.fetch(query).then((data) => setExperiences(data));
+        client.fetch(query)
+            .then((data) => setExperiences(data))
+            .catch(err => console.log(err));
         client.fetch(skillsQuery).then((data) =>
             setSkills(sortBy(data, ['name']))
-        );
+        ).catch(err => console.log(err));
     }, []);
 
     return (
@@ -31,10 +33,10 @@ const Skills = () => {
                             transition={{ duration: 0.5 }}
                             className='app__skills-item app__flex'
                         >
-                            <div className='app__flex' style={{ backgroundColor: skill.bgColor }}>
-                                <img src={urlFor(skill.icon)} alt={skill.name} />
+                            <div className='app__flex' style={{ backgroundColor: skill?.bgColor }}>
+                                <img src={urlFor(skill?.icon)} alt={skill?.name} />
                             </div>
-                            <p className='p-text'>{skill.name}</p>
+                            <p className='p-text'>{skill?.name}</p>
                         </motion.div>
                     ))}
                 </motion.div>
@@ -55,18 +57,18 @@ const Skills = () => {
                                             transition={{ duration: 0.5 }}
                                             className='app__skills-exp-work'
                                             data-tip
-                                            data-for={work.name}
+                                            data-for={work?.name}
                                         >
-                                            <h4 className='bold-text'>{work.name}</h4>
-                                            <p className='p-text'>{work.company}</p>
+                                            <h4 className='bold-text'>{work?.name}</h4>
+                                            <p className='p-text'>{work?.company}</p>
                                         </motion.div>
                                         <ReactTooltip
-                                            id={work.name}
+                                            id={work?.name}
                                             effect='solid'
                                             arrowColor='#fff'
                                             className='skills-tooltip'
                                         >
-                                            {work.desc}
+                                            {work?.desc}
                                         </ReactTooltip>
                                     </React.Fragment>
                                 ))}

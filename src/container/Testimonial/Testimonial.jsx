@@ -18,10 +18,12 @@ const Testimonial = () => {
     useEffect(() => {
         const query = '*[_type == "testimonials"]';
         const brandsQuery = '*[_type == "brands"]';
-        client.fetch(query).then((data) => setTestimonials(data));
+        client.fetch(query)
+            .then((data) => setTestimonials(data))
+            .catch(err => console.log(err));
         client.fetch(brandsQuery).then((data) =>
             setBrands(sortBy(data, ['name']))
-        );
+        ).catch(err => console.log(err));
     }, []);
 
     return (
@@ -29,22 +31,22 @@ const Testimonial = () => {
             {testimonials?.length && (
                 <>
                     <div className='app__testimonial-item app__flex'>
-                        <img src={urlFor(testimonials[currentIndex].imageurl)} alt={testimonials[currentIndex].name} />
+                        <img src={urlFor(testimonials[currentIndex].imageurl)} alt={testimonials[currentIndex]?.name} />
                         <div className='app__testimonial-content'>
                             <p className='p-text'>{testimonials[currentIndex].feedback}</p>
                             <div>
-                                <h4 className='bold-text'>{testimonials[currentIndex].name}</h4>
-                                <h5 className='p-text'>{testimonials[currentIndex].company}</h5>
+                                <h4 className='bold-text'>{testimonials[currentIndex]?.name}</h4>
+                                <h5 className='p-text'>{testimonials[currentIndex]?.company}</h5>
                             </div>
                         </div>
                     </div>
   
                     <div className='app__testimonial-btns app__flex'>
-                        <div className='app__flex' onClick={() => handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}>
+                        <div className='app__flex' onClick={() => handleClick(currentIndex === 0 ? testimonials?.length - 1 : currentIndex - 1)}>
                             <HiChevronLeft />
                         </div>
   
-                        <div className='app__flex' onClick={() => handleClick(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)}>
+                        <div className='app__flex' onClick={() => handleClick(currentIndex === testimonials?.length - 1 ? 0 : currentIndex + 1)}>
                             <HiChevronRight />
                         </div>
                     </div>
@@ -57,7 +59,7 @@ const Testimonial = () => {
                         transition={{ duration: 0.5, type: 'tween' }}
                         key={index}
                     >
-                        <img src={urlFor(brand.imgUrl)} alt={brand.name} />
+                        <img src={urlFor(brand?.imgUrl)} alt={brand?.name} />
                     </motion.div>
                 ))}
             </div>

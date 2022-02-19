@@ -1,17 +1,32 @@
 import { BsTwitter, BsInstagram } from 'react-icons/bs';
-import { FaFacebookF } from 'react-icons/fa';
+import { FaFacebookF, FaGithub, FaLinkedin } from 'react-icons/fa';
 
-// TODO : Add more social icons and add my social links
 const SocialMedia = () => (
     <div className='app__social'>
         <div>
-            <BsTwitter />
+            <a href='https://twitter.com/johnch1p/' target='_blank' rel='noreferrer'>
+                <BsTwitter />
+            </a>
         </div>
         <div>
-            <FaFacebookF />
+            <a href='https://www.facebook.com/johnchip1255/' target='_blank' rel='noreferrer'>
+                <FaFacebookF />
+            </a>
         </div>
         <div>
-            <BsInstagram />
+            <a href='https://www.instagram.com/johnch1p/' target='_blank' rel='noreferrer'>
+                <BsInstagram />
+            </a>
+        </div>
+        <div>
+            <a href='https://github.com/jonoman55/' target='_blank' rel='noreferrer'>
+                <FaGithub />
+            </a>
+        </div>
+        <div>
+            <a href='https://www.linkedin.com/in/john-chiappetta-ab4091143/' target='_blank' rel='noreferrer'>
+                <FaLinkedin />
+            </a>
         </div>
     </div>
 );

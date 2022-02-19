@@ -1,6 +1,5 @@
 import { NavigationDots, SocialMedia } from '../components';
 
-// TODO : convert the name p tag into an a tag with a link to my github
 const AppWrap = (Component, idName, classNames) => function HOC() {
     return (
         <div id={idName} className={`app__container ${classNames}`}>
