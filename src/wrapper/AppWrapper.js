@@ -1,5 +1,7 @@
 import { NavigationDots, SocialMedia } from '../components';
 
+// High Order Component for section nav
+// TODO : Add github link to copyright
 const AppWrap = (Component, idName, classNames) => function HOC() {
     return (
         <div id={idName} className={`app__container ${classNames}`}>

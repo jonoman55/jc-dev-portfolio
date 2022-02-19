@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 
+// High Order Component w/ motion
 const MotionWrap = (Component, classNames) => function HOC() {
     return (
         <motion.div

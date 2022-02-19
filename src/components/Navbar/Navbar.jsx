@@ -6,6 +6,8 @@ import './Navbar.scss';
 
 const menuItems = ['home', 'about', 'work', 'skills', 'contact'];
 
+// TODO : Add better logo image
+// TODO : Add social links to mobile menu
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
     return (
