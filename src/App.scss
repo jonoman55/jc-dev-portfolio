@@ -115,12 +115,16 @@
     transition: all 0.3s ease-in-out;
 
     svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 15px;
       height: 15px;
       color: var(--gray-color);
     }
 
     &:hover {
+      cursor: pointer;
       background-color: var(--secondary-color);
       border-color: var(--secondary-color);
 
@@ -169,7 +173,6 @@
 }
 
 @media screen and (max-width: 500px) {
-
   .app__navigation,
   .app__social {
     display: none;
