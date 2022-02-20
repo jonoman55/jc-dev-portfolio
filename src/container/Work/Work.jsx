@@ -8,7 +8,7 @@ import './Work.scss';
 
 const initalAnimateState = [{ y: 0, opacity: 1 }];
 
-const tags = ['All', 'API', 'Next JS', 'React JS', 'Redux', 'UI/UX', 'Vue'];
+const tags = ['All', 'API', 'MERN', 'Next JS', 'React JS', 'Redux', 'UI/UX', 'Vue'];
 
 const Work = () => {
     const [activeFilter, setActiveFilter] = useState('All');
