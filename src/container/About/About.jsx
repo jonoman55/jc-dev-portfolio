@@ -5,7 +5,6 @@ import { client, urlFor } from '../../client';
 import { sortBy } from 'lodash';
 import './About.scss';
 
-// TODO : Add better images to About section 
 const About = () => {
     const [abouts, setAbouts] = useState([]);
 
