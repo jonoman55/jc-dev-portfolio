@@ -22,6 +22,10 @@ import mongodb from '../assets/mongodb.png';
 import next from '../assets/next.png';
 import java from '../assets/java.png';
 import tailwind from '../assets/tailwindcss.png';
+import bootstrap from '../assets/bootstrap.png';
+import sql from '../assets/sql.png';
+import linux from '../assets/linux.png';
+import asp from '../assets/asp.png';
 
 import about01 from '../assets/about01.png';
 import about02 from '../assets/about02.png';
@@ -49,6 +53,7 @@ export default {
   javascript,
   mu5,
   tailwind,
+  bootstrap,
   node,
   next,
   python,
@@ -57,6 +62,9 @@ export default {
   sass,
   typescript,
   vue,
+  sql,
+  linux,
+  asp,
   mongodb,
   about01,
   about02,
